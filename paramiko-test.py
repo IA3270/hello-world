@@ -1,5 +1,4 @@
 import paramiko
-#import pexpect
 import time
 from netmiko import ConnectHandler
 
@@ -9,12 +8,13 @@ password = "cisco"
 
 ssh_client = paramiko.SSHClient()
 ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-ssh_client.connect(hostname=ip_address, username=username, password=password)
+ssh_client.connect(hostname=ip_address, username=username,
+                   password=password, look_for_keys=False, allow_agent=False)
 
 print("Successful Connection", ip_address)
 
 remote_connection = ssh_client.invoke_shell()
-output = remote_connection.send("sh ip int brief\n")
+output = remote_connection.recv(50000)
 print(output)
 
-remote_connection.send
+# remote_connection.send

@@ -10,7 +10,7 @@ print(router["username"])
 print(router["password"])
 
 with manager.connect(hostname=router["hostname"], ip_address=router["ip address"], port=router["port"], username=router["username"], password=router["password"], enable=router["enable"]
-                     close.session)
+                     m.close.session)
 
 
 print(" ")
